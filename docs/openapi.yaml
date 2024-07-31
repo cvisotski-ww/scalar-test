@@ -4,7 +4,8 @@ info:
   description: Nexa Platform's Telemetry Public Apis
   contact: {
     "name": "Corey Visotski",
-    "url": "https://www.nexaplatform.com/"
+    "url": "https://www.nexaplatform.com/",
+    "email":"corey.visotski@wattswater.com"
   }
   version: "1.0"
 servers:
