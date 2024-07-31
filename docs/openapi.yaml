@@ -20,7 +20,7 @@ info:
       - Choose the permissions you need (e.g., read-only or read-write).
       - Click **Generate** to create your API key.
       - Copy the generated API key and keep it secure. You will need it to authenticate your API requests.
-      
+
   contact: {
     "name": "Corey Visotski",
     "url": "https://www.nexaplatform.com/",
@@ -33,7 +33,7 @@ servers:
 paths:
   /webhook:
     post:
-      summary: Replay
+      summary: Replay Failed Webhook Integrations
       operationId: replay
       requestBody:
         content:
@@ -49,7 +49,7 @@ paths:
             application/json: {}
   /organization/{id}:
     get:
-      summary: Organization Information
+      summary: Request Metadata about an Organization Information
       operationId: organization-information
       parameters:
         - name: id
@@ -77,7 +77,7 @@ paths:
                   postalCode: string
   /telemetry:
     get:
-      summary: Historical Telemetry
+      summary: Request Historical Telemetry over a Time Period
       operationId: historical-telemetry
       parameters:
         - name: organizationId
