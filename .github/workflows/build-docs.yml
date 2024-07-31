@@ -15,7 +15,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
           node-version: 20
-    - name: Validate OpenAPI File
+    - name: Generate OpenAPI File
         # Replace `./my-openapi-file.yaml` with the correct path and filename for your project.
         # Or: run `npx @scalar/cli init` and add the config file to your repository.
       run: npx @scalar/cli share docs/openapi.yaml

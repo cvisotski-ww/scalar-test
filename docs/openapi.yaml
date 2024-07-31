@@ -1,12 +1,32 @@
 openapi: 3.1.0
 info:
   title: Api Nexa Telemetry
-  description: Nexa Platform's Telemetry Public Apis
+  description: |
+   Nexa Platform's Telemetry Public Apis
+
+   ## Getting Started 
+   Welcome to the API documentation! This guide will help you get started by generating an API key and integrating with one of our endpoints: Replay, Organization Information, or Historical Telemetry.
+  
+   ## Generating an API Key
+
+    To access the API, you need to generate an API key. Follow these steps:
+
+    1. **Log In**: Visit our [developer portal](https://developer.example.com) and log in with your credentials. If you do not have an account, create one by following the registration process.
+
+    2. **Generate API Key**:
+      - Navigate to the **API Keys** section in the developer portal.
+      - Click on **Create New API Key**.
+      - Provide a name for your key (e.g., "MyApp Key").
+      - Choose the permissions you need (e.g., read-only or read-write).
+      - Click **Generate** to create your API key.
+      - Copy the generated API key and keep it secure. You will need it to authenticate your API requests.
+      
   contact: {
     "name": "Corey Visotski",
     "url": "https://www.nexaplatform.com/",
     "email":"corey.visotski@wattswater.com"
   }
+  
   version: "1.0"
 servers:
   - url: https://testapimnexa.azure-api.net
