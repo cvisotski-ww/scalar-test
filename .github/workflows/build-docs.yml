@@ -1,0 +1,21 @@
+# Extracted from https://github.com/jizt-it/jizt-api-spec/blob/main/.github/workflows/build-docs.yml
+
+name: Build docs
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+          node-version: 20
+    - name: Validate OpenAPI File
+        # Replace `./my-openapi-file.yaml` with the correct path and filename for your project.
+        # Or: run `npx @scalar/cli init` and add the config file to your repository.
+      run: npx @scalar/cli npx @scalar/cli share /docs/openapi.yaml

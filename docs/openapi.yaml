@@ -1,0 +1,172 @@
+openapi: 3.1.0
+info:
+  title: Api Nexa Telemetry
+  description: First Public Api For Nexa using Scalar
+  version: "1.0"
+servers:
+  - url: https://testapimnexa.azure-api.net
+paths:
+  /webhook:
+    post:
+      summary: Replay
+      operationId: replay
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Replay_Request"
+            example:
+              webhookId: string
+      responses:
+        "202":
+          description: ""
+          content:
+            application/json: {}
+  /organization/{id}:
+    get:
+      summary: Organization Information
+      operationId: organization-information
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: ""
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Organization"
+              example:
+                id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+                name: string
+                timeZone: string
+                address:
+                  country: string
+                  address1: string
+                  address2: string
+                  city: string
+                  state: string
+                  postalCode: string
+  /telemetry:
+    get:
+      summary: Historical Telemetry
+      operationId: historical-telemetry
+      parameters:
+        - name: organizationId
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+        - name: end_date
+          in: query
+          schema:
+            type: string
+        - name: aggregation
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Telemetry_Response"
+              example:
+                - telemetryData:
+                    - deviceId: string
+                      datapointName: string
+                      unitOfMeasure: string
+                      uoM: string
+                      values:
+                        - timestampUtc: 2024-07-29T12:41:02.6020000+00:00
+                          value: 0
+components:
+  schemas:
+    Replay_Request:
+      type: object
+      properties:
+        webhookId:
+          type: string
+      x-apim-schema-name: Replay Request
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        timeZone:
+          type: string
+        address:
+          type: object
+          properties:
+            country:
+              type: string
+            address1:
+              type: string
+            address2:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            postalCode:
+              type: string
+    Telemetry_Response:
+      type: array
+      items:
+        required:
+          - telemetryData
+        type: object
+        properties:
+          telemetryData:
+            type: array
+            items:
+              required:
+                - deviceId
+                - datapointName
+                - unitOfMeasure
+                - uoM
+                - values
+              type: object
+              properties:
+                deviceId:
+                  type: string
+                datapointName:
+                  type: string
+                unitOfMeasure:
+                  type: string
+                uoM:
+                  type: string
+                values:
+                  type: array
+                  items:
+                    required:
+                      - timestampUtc
+                      - value
+                    type: object
+                    properties:
+                      timestampUtc:
+                        type: string
+                      value:
+                        type: integer
+      x-apim-schema-name: Telemetry Response
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+  - apiKeyHeader: []
+  - apiKeyQuery: []
